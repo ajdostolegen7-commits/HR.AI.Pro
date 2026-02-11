@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)file:///C:/Users/MB-101-23/Downloads/HR%20AI%20Pro%20%E2%80%94%20Intelligence%20System.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR AI Pro — Intelligence System</title>
+
+    <script src="./HR AI Pro — Intelligence System_files/pdf.min.js.Без названия"></script>
+    <script src="./HR AI Pro — Intelligence System_files/mammoth.browser.min.js.Без названия"></script>
+    <script src="./HR AI Pro — Intelligence System_files/html2pdf.bundle.min.js.Без названия"></script>
+
+    <style>
+        :root {
+            --bg-color: #05070a;
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #1a1f35 0%, var(--bg-color) 70%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 15px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .header { text-align: center; margin-bottom: 10px; }
+        .header h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+        .header p { color: #6b7280; margin-top: 10px; font-weight: 300; }
+
+        .step-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px;
+            position: relative;
+            transition: 0.3s ease;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .label { display: block; margin-bottom: 15px; font-size: 0.9rem; color: #9ca3af; font-weight: 500; }
+
+        textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            color: #fff;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 15px rgba(0, 210, 255, 0.1); }
+
+        .upload-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-zone:hover { border-color: var(--accent-purple); background: rgba(157, 80, 187, 0.05); }
+
+        .icon-box { font-size: 40px; margin-bottom: 10px; filter: drop-shadow(0 0 10px var(--accent-blue)); }
+
+        #file-info { font-size: 0.85rem; color: var(--accent-blue); margin-top: 10px; font-weight: bold; }
+
+        .action-area { display: flex; gap: 20px; margin-top: 10px; }
+
+        .btn {
+            flex: 1;
+            padding: 18px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.4s;
+            color: #fff;
+        }
+
+        .btn-analyze { background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); }
+        .btn-analyze:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2); }
+
+        .btn-pdf { background: #10b981; display: none; }
+
+        #result {
+            margin-top: 20px;
+            padding: 40px;
+            background: #ffffff !important;
+            color: #1a1a1a !important;
+            border-radius: 20px;
+            white-space: pre-wrap;
+            display: none;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .loader {
+            display: none;
+            text-align: center;
+            font-weight: bold;
+            color: var(--accent-blue);
+            animation: pulse 1.5s infinite;
+            padding: 20px;
+        }
+
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>HR AI PRO</h1>
+        <p>Интеллектуальный анализ кандидатов нового поколения</p>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">01</div>
+        <label class="label">💼 ТРЕБОВАНИЯ ВАКАНСИИ</label>
+        <textarea id="job" rows="3" placeholder="Введите требования вакансии..."></textarea>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">02</div>
+        <label class="label">📄 ЗАГРУЗКА ДОКУМЕНТА</label>
+        <label class="upload-zone">
+            <div class="icon-box">📁</div>
+            <span style="color: #9ca3af;">PDF/DOCX файлды таңдаңыз</span>
+            <input type="file" id="fileInput" accept=".pdf,.docx" style="display:none">
+            <div id="file-info"></div>
+        </label>
+    </div>
+
+    <div class="step-card">
+        <div class="step-number">03</div>
+        <label class="label">📝 ТЕКСТ РЕЗЮМЕ (РЕДАКТИРУЕМЫЙ)</label>
+        <textarea id="cv" rows="6" placeholder="Текст из файла появится здесь..."></textarea>
+    </div>
+
+    <div class="action-area">
+        <button class="btn btn-analyze" onclick="analyze()">⚡ ЗАПУСТИТЬ АНАЛИЗ</button>
+        <button class="btn btn-pdf" id="pdfBtn" onclick="downloadPDF()">📥 СКАЧАТЬ ОТЧЕТ</button>
+    </div>
+
+    <div id="loader" class="loader">⚙️ ИИ СКАНИРУЕТ ДАННЫЕ...</div>
+    <div id="result"></div>
+</div>
+
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+    // Файлды оқу
+    document.getElementById('fileInput').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        document.getElementById('file-info').innerText = "✅ ФАЙЛ: " + file.name.toUpperCase();
+        const cvArea = document.getElementById('cv');
+        cvArea.value = "Мәтін оқылуда...";
+
+        try {
+            if (file.type === "application/pdf") {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+                let text = "";
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const content = await page.getTextContent();
+                    text += content.items.map(item => item.str).join(" ") + "\n";
+                }
+                cvArea.value = text;
+            } else if (file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+                const arrayBuffer = await file.arrayBuffer();
+                const result = await mammoth.extractRawText({arrayBuffer});
+                cvArea.value = result.value;
+            }
+        } catch (err) {
+            alert("Файлды оқу қатесі!");
+            cvArea.value = "";
+        }
+    });
+
+    async function analyze() {
+        const job = document.getElementById("job").value;
+        const cv = document.getElementById("cv").value;
+        const resultDiv = document.getElementById("result");
+        const loader = document.getElementById("loader");
+        const pdfBtn = document.getElementById("pdfBtn");
+
+        if (!job || !cv) { alert("Барлық өрісті толтырыңыз!"); return; }
+
+        resultDiv.style.display = "none";
+        pdfBtn.style.display = "none";
+        loader.style.display = "block";
+
+        // ТВОЙ НОВЫЙ API КЛЮЧ
+        const apiKey = "";
+
+        try {
+            const response = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + apiKey
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages: [
+                        { role: "system", content: "Ты профессиональный HR-директор. Сделай подробный анализ соответствия резюме вакансии. Отвечай на языке запроса." },
+                        { role: "user", content: `Вакансия: ${job}\n\nРезюме: ${cv}` }
+                    ],
+                    temperature: 0.3
+                })
+            });
+
+            const data = await response.json();
+            
+            if (data.error) {
+                throw new Error(data.error.message);
+            }
+
+            loader.style.display = "none";
+            resultDiv.style.display = "block";
+            resultDiv.innerText = data.choices[0].message.content;
+            pdfBtn.style.display = "block";
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            
+        } catch (e) {
+            loader.style.display = "none";
+            alert("Қате: " + e.message);
+        }
+    }
+
+    function downloadPDF() {
+        const element = document.getElementById('result');
+        const opt = {
+            margin: 15,
+            filename: 'HR_AI_Report.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+
+
+</body></html>
